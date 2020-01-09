@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpsService } from './services/https.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; 
 import { AuthInterceptor } from './services/auth.interceptor';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AuthInterceptor } from './services/auth.interceptor';
     FooterComponent,
     SidebarComponent,
     ListComponent,
-    HotelDetailsComponent
+    HotelDetailsComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

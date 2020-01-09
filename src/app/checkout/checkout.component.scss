@@ -1,0 +1,85 @@
+.banner-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: .25rem;
+    h6 {
+        margin-bottom: 0;
+    }
+}
+.last-badg {
+    background-color: #ff4941;
+    padding: 0.2rem 1.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    img {
+        width: 32px;
+        margin-right: 1rem;
+    }
+}
+.checkout-result {
+    background-color: #f9f9f9;
+    border-top: .25rem;
+}
+.card-header {
+    background-color: #e5f9e8;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem 3rem;
+    border-bottom: none;
+    .time {
+        color: #00c71f;
+        font-size: 2rem;
+    }
+}
+.card-body {
+    padding: 1.5rem 3rem
+}
+
+form {
+    .control-group {
+        margin-bottom: 1rem;
+    }
+    .payment-label {
+        font-size: 1.3rem;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    .form-control {
+        height: 2.5rem;
+    }
+}
+.payment-btn {
+    color: white;
+    background-color: #ffa419;
+    line-height: 1;
+    padding: 1rem 3rem;
+    .proceed-to {
+
+    }
+    .payment {
+        font-size: 2rem;
+    }
+}
+.country-code {
+    width: 70px;
+    margin-right: 0.5rem;
+}
+.inr-amount-sm {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.inr-amount {
+    font-size: 2rem;
+    font-weight: bold;
+}
+.saved-amount {
+    color:#35d24e;
+    font-size: 1.2rem
+}
