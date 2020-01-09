@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpsService } from '../https.service';
+import { HttpsService } from '../services/https.service';
 
 @Component({
   selector: 'app-list',

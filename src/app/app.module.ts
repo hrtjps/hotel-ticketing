@@ -14,8 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatStepperModule, MatDialogModule } from '@angular/material'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpsService } from './https.service';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpsService } from './services/https.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; 
+import { AuthInterceptor } from './services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,13 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule, ReactiveFormsModule, HttpClientModule
   ],
   providers: [
-    HttpsService
+    HttpsService,
+
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

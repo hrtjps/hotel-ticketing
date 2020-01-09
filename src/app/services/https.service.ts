@@ -6,15 +6,13 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class HttpsService {
-
-  private _host:string = 'http://85c5d80d.ngrok.io/';  
-  private _url:string  = this._host+'api/v1/';
+  private _url:string  = 'api/v1/';
   constructor(public http: HttpClient) {
   } 
 
   login(fields){
     const body = JSON.stringify(fields);
-    return this.http.post(this._host+'authenticate', body);
+    return this.http.post('authenticate', body);
   }
   searchRoom(params){
     const body = JSON.stringify(params);
@@ -22,4 +20,7 @@ export class HttpsService {
     console.log(this._url+'search_rooms/search?'+params);
     return this.http.get(this._url+'search_rooms/search?'+params);
   } 
+  getDetailInfo(id) {
+    return this.http.get(this._url + `hotels/${id}`);
+  }
 }
