@@ -1,0 +1,71 @@
+.title {
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.bg-green {
+    background: #b8f49c;
+}
+
+.bg-red {
+    background: #ff4941;
+}
+
+.content-wrapper {
+    padding-top: 70px;
+
+    .breadcrumb {
+        li {
+            font-size: 13px;
+            font-weight: 500;
+        }
+    }
+ 
+    .rate-txt {
+        color: #777;
+        font-size: 12px;
+    
+        .rate {
+            background: #2ed147;
+            color: #fff;
+            padding: 2px 3px 3px;
+            font-size: 11px;
+    
+            &.medium {
+                background: #fdec18;
+                color: #666;
+            }
+        }
+    }
+
+    .btn-save {
+        color: #fff;
+        background: #ff9f0c;
+        font-size: 13px;
+        font-weight: 400;
+    }
+    
+    .ratings {
+        .fa-star {
+            color: #ddd;
+            padding-right: 5px;
+            font-size: 13px;
+
+            &.active {
+                color: #fc3;
+            }
+        }
+    }
+}
+
+.txt-inr-sm {
+    font-size: 14px;
+    text-decoration: line-through;
+}
+
+
+@media (max-width: 767.98px) { 
+    .content-wrapper {
+        padding-top: 0;
+    }
+}

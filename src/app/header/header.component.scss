@@ -1,0 +1,159 @@
+.navbar {
+    padding: 0 30px;
+
+    .navbar-toggler-icon {
+        background-image: url("../../assets/images/home-mobile/menu.svg");
+    }
+    
+    ul {
+        li {
+            a {
+                color: #555;
+                font-size: 13px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                padding: 25px 15px;
+
+                img  {
+                    max-width: 19px;
+                }
+            }
+
+            &.active {
+                a {
+                    color: #ffb30e;
+                }
+            }
+        }
+    }
+
+    .btn-wrapper {      
+        .dd-country {
+            background: #f5f5f5;
+            font-size: 11px;
+            font-weight: 500;
+        }
+         
+        .btn-signin {
+            color: #555;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .btn-signup {
+            color: #fff;
+            background: #ff9f0c;
+            font-size: 13px;
+            font-weight: 500;
+        }
+    }
+}
+    
+.dropdown {
+    position: relative;
+    
+    input {
+        font-size: 11px;
+        width: 40px;
+        background-color: #eee;
+        font-weight: 500;
+    }
+    .list {           
+        font-weight: 500;
+        position: absolute;
+        z-index: 9999;
+        background: #fff;
+        width: 100%;
+        max-height: 100px;
+        box-shadow: 0px 2px 3px 0px #ccc;
+        overflow: auto;
+        display: none;
+
+        li {
+            padding: 5px;
+            font-size: 11px;
+            font-weight: 500;
+
+            img {
+                max-width: 18px;
+            }
+        }
+    }
+    &:hover {
+        .list {
+            display: block;
+        }
+    }
+} 
+
+
+@media (max-width: 576px) { 
+    .navbar {
+        padding: 0 5px 0 10px !important;  
+    }
+}
+
+@media (max-width: 767.98px) { 
+    .navbar {
+        padding: 0 15px;  
+
+        ul {
+            li {
+                a {
+                    padding: 15px 10px;
+                }
+            }
+        }
+    }
+
+    .country-sm {
+        display: block !important;
+        position: absolute;
+        top: 10px;
+        right: 95px;
+    }
+
+    .country-lg {
+        display: none;
+    }
+}
+
+@media (max-width: 991.98px) { 
+    .navbar {
+        padding: 0 15px;
+
+        li {
+            a {
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+            }
+        }
+    }
+}
+
+.nav-mobile {
+    margin-top: 45px;
+    background: #1c3745;
+    padding: 0;
+
+    li {
+        a {
+            text-align: center;
+            color: #fff;
+            font-size: 11px;
+            padding: .5rem .75rem;
+
+            img {
+                margin: 5px 0;
+            }
+        }
+
+        &.active {
+            a {
+                color: #ffb30e;
+                border-bottom: 2px solid;
+            }
+        }
+    }
+}

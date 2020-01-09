@@ -1,0 +1,83 @@
+.menu {
+    padding: 0;
+
+    li {
+        padding: .5rem 0 0;
+
+        a {
+            text-align: center;
+            color: #ccc;
+            font-size: 10px;
+            font-weight: 500;
+            padding: .5rem .25rem .25rem;
+
+            img {
+                margin: 5px 0;
+            }
+        }
+
+        &.active {
+            a {
+                color: #333;
+                border-bottom: 2px solid #ffb30e;
+            }
+        }
+    }
+}
+
+.search-wrapper {
+    label{
+        position: absolute;
+        top: 4px;
+        left: 15px;
+        font-size: 11px;
+        font-weight: 400;
+        color: #bbb;
+    }
+    .input-control {
+        height: 40px;
+        padding: 15px 15px 0;
+        border-radius: 90px;
+        font-weight: 500;
+        font-size: 12px;
+        border: 0;
+    }
+
+    .btn-search {
+        padding: 14px 32px;
+        border-radius: 90px; 
+        width: 100%;
+        color: #fff;      
+        font-size: 15px;
+    }
+} 
+
+.loc-wrapper {
+    background: url("../../assets/images/location.jpg");
+    background-size: contain;
+    height: 225px;
+}
+
+.recomend-wrapper, .price-wrapper {
+    color: #444;
+
+    span {
+        font-size: 14px;
+    }
+
+    .txt-count {
+        color: #999;
+        position: relative;
+        top: 2px;
+    }
+}
+
+.rate-list {
+    li {
+        &:last-child {
+            border: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+    }
+}

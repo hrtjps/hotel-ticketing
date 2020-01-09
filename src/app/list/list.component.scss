@@ -1,0 +1,80 @@
+.text-address {
+    color: #aaa;
+    font-size: 13px;
+}
+
+.chips {
+    li {
+        border-radius: 10px;
+        padding: 1px 5px 0 5px;
+        margin-bottom: 5px;
+
+        label {
+            margin: 0;
+        }
+    }
+}
+
+.detail-wrapper {
+    .card-img-right {
+        width: 250px;
+        height: 200px;    
+    }
+
+    .card-body {
+        .left {
+            flex: 0 0 85%;
+            padding-right: 10px;
+        }
+
+        .right {
+            flex: 0 0 15%;
+        }
+    }
+}
+
+@media (max-width: 767.98px) { 
+    .rating-section {
+        display: none;
+    }
+
+    .ddl-popularity {
+        display: none;
+    }
+
+    .detail-wrapper {
+        .card-img-right {
+            width: 120px;
+            height: 150px;    
+        }
+
+        .rate-txt-sm {
+            position: relative;
+            left: -18%;
+            z-index: 2;
+            display: block !important;
+            margin: 0;
+            bottom: 13px;
+        }
+    }
+
+    .menu-filter {
+        display: flex !important;
+    }
+    
+    .icon-back {
+        font-size: 50px;
+        padding-right: 10px;
+        flex: 1 1 5%;
+    }
+
+    .filter-content {
+        background: #ddd;
+        border-radius: 50px;
+        flex: 1 1 95%;
+        padding: 10px 35px;
+    }
+}
+
+
+

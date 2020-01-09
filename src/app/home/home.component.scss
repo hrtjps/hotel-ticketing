@@ -1,0 +1,69 @@
+.card-txt {
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.img-card-sm {
+    max-width: 80%;
+    border-radius: 5px;
+}
+
+.img-card-md {
+    max-width: 80%;
+    border-radius: 5px; 
+}
+
+.img-text {
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    left: 30px;
+}
+
+.rate-txt {
+    color: #777;
+    font-size: 12px;
+
+    .rate {
+        background: #2ed147;
+        color: #fff;
+        padding: 2px 3px 3px;
+        font-size: 11px;
+
+        &.medium {
+            background: #fdec18;
+            color: #666;
+        }
+    }
+}
+
+.hot-deal-wrapper {
+    .img-card-left {
+        width: 100%;
+        height: 87%;
+    }
+
+    .img-card-right {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 767.98px) { 
+    .home-wrapper {
+        img  {
+            max-width: 100%;
+        }
+    }
+    .hot-deal-wrapper {
+        .img-card-left {
+            width: 100%;
+            height: 100%;
+            padding-bottom: 15px;
+        }
+
+        .img-card-right {
+            max-width: 100%;
+        }
+    }
+ }

@@ -1,0 +1,28 @@
+footer {
+    background: #edeeef;
+
+    h6 {
+        font-size: 13px;
+        color: #777;
+    }
+
+    ul {
+        li {
+            a {
+                font-size: 13px;
+                color: #777;
+            }
+        }
+    }
+
+    .copyright-section {
+        font-size: 13px;
+        color: #777;
+    }
+}
+
+@media (max-width: 767.98px) { 
+    .app-store {
+        display: none;
+    }
+}

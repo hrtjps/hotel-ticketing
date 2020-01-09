@@ -1,0 +1,51 @@
+<div class="jumbotron banner-wrapper">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-11 col-xl-11 mx-auto">
+    <h1 class="text-300">Make Budget and Luxury Online</h1>
+
+    <h1 class="text-400">Hotel Bookings with just a click.</h1>
+
+    <section class="row m-0 search-wrapper">
+      <!--p class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-2 p-0 relative">
+        <label>Hotel / City</label>
+        <input type="text" class="form-control input-control input-first" placeholder="e.g. Singapore">
+      </p-->
+      <form (ngSubmit)="search()" [formGroup]="form">
+      <mat-form-field floatLabel="always" class="custom_formfield input-first">
+        <mat-label>Hotel / City</mat-label>
+        <input formControlName="city" matInput placeholder="e.g. Singapore">
+      </mat-form-field>
+
+      <mat-form-field floatLabel="always"  (click)="picker.open()" class="custom_formfield">
+        <mat-label>Check In</mat-label>
+        <input formControlName="check_in" matInput [matDatepicker]="picker" placeholder="DD/MM/YYYY">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field  floatLabel="always" (click)="picker2.open()"  class="custom_formfield">
+        <mat-label>Check Out</mat-label>
+        <input formControlName="check_out" matInput [matDatepicker]="picker2" placeholder="DD/MM/YYYY">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      
+      <mat-form-field floatLabel="always" class="custom_formfield">
+          <mat-label>Guests</mat-label>
+          <input formControlName="no_of_adult" matInput placeholder="2 Adults 1 Child">
+      </mat-form-field>
+
+      <!--p class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-2 p-0 relative">
+        <label>Guests</label>
+        <input type="text" class="form-control input-control" placeholder="2 Adults 1 Child">
+        <button mat-raised-button type="submit" class="px-6" color="accent">
+          Submit
+        </button>
+      </p-->
+      
+      <p class="col-12  col-sm-12 col-md-2 col-lg-2  col-xl-3 p-0 relative">
+        <input type="submit" class="btn  btn-search btn-warning" value="Search">
+      </p>
+      </form>
+    </section>
+  </div>
+</div>

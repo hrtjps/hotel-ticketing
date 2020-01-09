@@ -1,0 +1,106 @@
+.banner-wrapper {
+    background: url("../../assets/images/BackgroundImage.png") no-repeat center center;
+    background-size: 100% 100%;
+    padding: 10rem 2rem;
+    border-radius: 0;
+
+    h1 {
+        color: #fff;
+        font-size: 34px;
+    } 
+    form{
+        display: inherit;
+        .custom_formfield{
+            background-color: #fff;
+            height: 68px;
+            padding: 14px 0px 0 10px;              
+
+            .mat-form-field.mat-focused,
+            .mat-form-field-outline,
+            .mat-form-field-empty.mat-form-field-label,
+            .mat-form-field-label,
+            .mat-form-field-underline,
+            .mat-input-element,
+            ::placeholder {
+            color: rgba(73, 80, 87, 0.8)  !important;
+            font-weight: 500; 
+            }&.input-first {
+                border-radius: 13px 0 0 13px;    
+                height: 67.5px;   
+            }
+        }
+        .mat-datepicker-toggle {
+            display: none;
+        }
+        ::ng-deep .mat-form-field-label{
+            color: #bbb  !important;    
+            font-size: 16px;
+            font-weight: 500; 
+        }
+    
+    }
+    .search-wrapper {
+        padding-top: 20px;
+
+        label {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #bbb;
+        }
+
+        .input-control {
+            height: 68px;
+            padding: 20px 15px 0;
+            border: 0;
+            border-radius: 0;
+            color: #111;          
+            font-weight: 500;
+
+            &.input-first {
+                border-radius: 13px 0 0 13px;    
+                height: 67.5px;   
+            }
+        }
+
+        .btn-search {
+            font-size: 13px;
+            font-weight: 500;
+            padding: 23px 32px;
+            border-radius: 0 13px 13px 0;       
+        }
+    } 
+}
+
+/*** Mobile View ***/
+
+@media (max-width: 767.98px) { 
+    .banner-wrapper {
+        padding: 1.25rem 2rem;
+
+        h1 {
+            font-size: 25px;
+        }
+
+        .search-wrapper {
+            label{
+                top: 8px;
+            }
+            .input-control {
+                height: 55px !important;
+                padding: 15px 15px 0;
+                border-radius: 5px !important;
+            }
+
+            .btn-search {
+                padding: 14px 32px;
+                border-radius: 5px; 
+                width: 100%;
+                color: #fff;      
+                font-size: 15px;
+            }
+        } 
+    }
+}

@@ -1,0 +1,153 @@
+<div class="content-wrapper">
+  <div class="row m-0">
+    <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3  pr-md-0 pr-lg-0 pr-xl-0">
+      <app-sidebar class="d-none d-md-block"></app-sidebar>
+
+      <nav class="row d-md-none bg-grey">
+        <section class="col-12 col-sm-12 colmd-12 col-lg-12 col-x-12">
+          <article class="d-flex pt-3">
+            <i class="fa fa-angle-left icon-back" aria-hidden="true"></i>
+
+            <h6 class="filter-content">
+              <p class="mb-1">Singapore (486)</p>
+              <p class="mb-1">Dec 20 - Dec 21 . 2 Guests</p>
+            </h6>
+          </article>
+
+          <ul class="nav nav-fill  menu-filter ">
+            <li class="nav-item">
+              <a class="nav-link  text-secondary" href="#">
+                <span class="pl-2"> Sort </span>
+              </a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link  text-secondary" href="">
+                <span class="pl-2"> | </span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link  text-secondary" href="#">
+                <i class="fa fa-filter" aria-hidden="true"></i>
+                <span class="pl-2"> Filter </span>
+              </a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link  text-secondary" href="">
+                <span class="pl-2"> | </span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-secondary" href="#">
+                <i class="fa fa-square-o" aria-hidden="true"></i>
+                <span class="pl-2"> Map </span>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </nav>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
+      <nav>
+        <ol class="breadcrumb bg-white m-0">
+          <li> Home </li>
+          <li> <span class="mx-2"> &gt; </span> Singapore </li>
+          <li><span class="mx-2"> &gt; </span> Hotels</li>
+        </ol>
+      </nav>
+
+      <section class="row align-center m-0">
+        <article class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+          <h5 class="m-0">67 Hotels Found :)</h5>
+        </article>
+
+        <article class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 form-inline justify-content-end">
+          <select class="form-control form-control-sm float-right fs-13 ddl-popularity">
+            <option>Popularity</option>
+          </select>
+        </article>
+      </section>
+
+      <section class="row mx-0 mt-3" *ngIf="_hotelsList">
+        <article *ngFor="let hotel of _hotelsList" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  mb-3">
+          <div class="card flex-row flex-md-column flex-lg-row flex-xl-row flex-sm-row box-shadow detail-wrapper p-3">
+            <section class="d-flex align-baseline">
+              <div *ngIf="hotel.images.length > 0">
+                <p *ngFor="let src of hotel.images  | slice:0:1; let i=index">
+                  <img class="card-img-right flex-auto rounded-lg mb-2" alt="" [src]="src.url">
+                </p>
+              </div>
+              <img *ngIf="hotel.images.length == 0" class="card-img-right flex-auto rounded-lg mb-2" alt=""
+                src="../../assets/images/image3.png">
+              <p class="rate-txt rate-txt-sm d-none">
+                <span class="rate rounded mr-1">{{ hotel.ratings }}</span>
+              </p>
+            </section>
+
+            <div class="card-body py-0 pl-0 pl-sm-0 pl-md-3 pr-0">
+              <div class="row m-0">
+                <section class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-9 p-0">
+                  <h6 class="mb-0"> {{ hotel.name }} </h6>
+
+                  <p class="ratings mb-1">
+                    <i class="fa fa-star active" aria-hidden="true"></i>
+                    <i class="fa fa-star active" aria-hidden="true"></i>
+                    <i class="fa fa-star active" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </p>
+
+                  <p class="mb-1 text-address"> {{ hotel.address }} </p>
+
+                  <ul class="nav chips" *ngFor="let fac of hotel.facility">
+                    <li class="border mr-1">
+                      <label class="m-0">
+                        <span class="rb-value">{{ fac.name}}</span>
+                      </label>
+                    </li>
+                  </ul>
+                </section>
+
+                <section class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3 pr-0 rating-section">
+                  <article class="text-right">
+                    <p class="rate-txt mb-3 ">
+                      <span class="rate rounded mr-1">{{ hotel.ratings }}</span>
+                      <span>Awesome.</span>
+                      <span class="m-0 d-block pt-2">{{ hotel.reviews }} Reviews</span>
+                    </p>
+                  </article>
+                </section>
+              </div>
+
+              <div class="row m-0 align-flex-end">
+                <section class="col-6 col-sm-8 col-md-8 col-lg-8 col-xl-9 p-0">
+                  <p class="text-warning mb-0 fs-13">Some intresting fact / Nearby places</p>
+                  <p class="text-danger fs-13">Last Booked in 20 mins!</p>
+                </section>
+
+                <section class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 pr-0">
+                  <article class="text-right">
+                    <h6 class="txt-inr-sm m-0">$ {{ hotel.price }}</h6>
+
+                    <h5 class="m-0">$ {{ hotel.price }}<small class="fs-9 d-block">/Night</small></h5>
+
+
+                    <h6 class="text-success fs-14 text-400">Free Cancellation</h6>
+
+                    <p class="mb-0 mt-3">
+                      <input type="button" class="btn btn-sm btn-save" value="Show Rooms">
+                    </p>
+                  </article>
+                </section>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
+  </div>
+</div>
