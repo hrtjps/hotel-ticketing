@@ -12,7 +12,6 @@ export class ListComponent implements OnInit {
   _hotelsList:any;
   constructor(private activateRoute: ActivatedRoute,
               private http: HttpsService) {
-
   }
 
   ngOnInit() {

@@ -4,7 +4,7 @@
       <app-sidebar></app-sidebar>
     </div>
 
-    <div class="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
+    <div class="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-9" *ngIf="hotel">
       <nav>
         <ol class="breadcrumb bg-white m-0">
           <li> Home </li>
@@ -16,7 +16,7 @@
 
       <section class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <p class="alert bg-green text-500 text-center px-0 fs-14 m-0">
-          Last Booked in _ minutes / This deal ends in _ mins
+          Last Booked in {{hotel.check_in}} / This deal ends in {{hotel.check_out}}
         </p>
       </section>
 
@@ -43,14 +43,14 @@
         <section class="card">
           <article class="card-body row m-0 px-3 py-2">
             <h6 class="card-subtitle m-0 col-9 col-sm-8 col-md-9 col-lg-9 col-xl-9 p-0">
-              Hotel Name - Lorem Ipsum
-              <span class="d-block fs-13 text-400 pt-2">Hotel Address</span>
+              {{hotel.name}}
+              <span class="d-block fs-13 text-400 pt-2">{{hotel.address}}</span>
             </h6>
 
             <p class="rate-txt m-0 col-3 col-sm-4 col-md-3 col-lg-3 col-xl-3 text-right p-0">
-              <span class="rate rounded mr-1">4.5 </span>
+              <span class="rate rounded mr-1">{{hotel.ratings}} </span>
               <span>Awesome.</span>
-              <span class="m-0 d-block pt-2">1241 Reviews</span>
+              <span class="m-0 d-block pt-2">{{hotel.reviews}} Reviews</span>
             </p>
           </article>
         </section>
@@ -62,75 +62,11 @@
             <h6>Faclities Offered</h6>
 
             <p class="row m-0 pt-2">
-              <label class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 custom-checkbox mb-2">
+              <label class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 custom-checkbox mb-2" *ngFor="let item of hotel.facility">
                 <input type="checkbox">
                 <span class="checkmark"></span>
                 <span class="ratings ml-1">
-                  Free WifiFree Wifi
-                </span>
-              </label>
-
-              <label class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 custom-checkbox mb-2">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-                <span class="ratings ml-1">
-                  Free Wifi
-                </span>
-              </label>
-
-              <label class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 custom-checkbox mb-2">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-                <span class="ratings ml-1">
-                  Free Wifi
-                </span>
-              </label>
-
-              <label class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 custom-checkbox mb-2">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-                <span class="ratings ml-1">
-                  Free Wifi
-                </span>
-              </label>
-
-              <label class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 custom-checkbox mb-2">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-                <span class="ratings ml-1">
-                  Free Wifi
-                </span>
-              </label>
-
-              <label class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 custom-checkbox mb-2">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-                <span class="ratings ml-1">
-                  Free Wifi
-                </span>
-              </label>
-
-              <label class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 custom-checkbox mb-2">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-                <span class="ratings ml-1">
-                  Free Wifi
-                </span>
-              </label>
-
-              <label class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 custom-checkbox mb-2">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-                <span class="ratings ml-1">
-                  Free Wifi
-                </span>
-              </label>
-
-              <label class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 custom-checkbox mb-2">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-                <span class="ratings ml-1">
-                  Free Wifi
+                  {{item.name}}
                 </span>
               </label>
             </p>
@@ -142,46 +78,9 @@
         <section class="card">
           <article class="card-body row justify-content-between px-3 pt-2 pb-0">
             <h6 class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">Nearby Locations</h6>
-
-            <section class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-              <ul class="list-unstyled mb-2">
-                <li class="mb-1 fs-13">
-                  Attracion Name <span class="float-right">1km</span>
-                </li>
-                <li class="mb-1 fs-13">
-                  Attracion Name <span class="float-right">1km</span>
-                </li>
-                <li class="mb-1 fs-13">
-                  Attracion Name <span class="float-right">1km</span>
-                </li>
-                <li class="mb-1 fs-13">
-                  Attracion Name <span class="float-right">1km</span>
-                </li>
-                <li class="mb-1 fs-13">
-                  Attracion Name <span class="float-right">1km</span>
-                </li>
-              </ul>
-            </section>
-
-            <section class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-              <ul class="list-unstyled mb-2">
-                <li class="mb-1 fs-13">
-                  Attracion Name <span class="float-right">1km</span>
-                </li>
-                <li class="mb-1 fs-13">
-                  Attracion Name <span class="float-right">1km</span>
-                </li>
-                <li class="mb-1 fs-13">
-                  Attracion Name <span class="float-right">1km</span>
-                </li>
-                <li class="mb-1 fs-13">
-                  Attracion Name <span class="float-right">1km</span>
-                </li>
-                <li class="mb-1 fs-13">
-                  Attracion Name <span class="float-right">1km</span>
-                </li>
-              </ul>
-            </section>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-1 fs-13" *ngFor="let item of hotel.near_by_restaurant">
+              {{item.name}} <span class="float-right">1km</span>
+            </div>
           </article>
         </section>
       </div>
@@ -893,7 +792,7 @@
 
     <hr class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11 mx-auto pr-0 border-secondary">
 
-    <div class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11 mx-auto">
+    <div class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11 mx-auto" *ngIf="hotel">
       <h5 class="title col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-4">Similar Properties</h5>
 
       <article class="row  m-0">

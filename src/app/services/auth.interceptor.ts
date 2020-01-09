@@ -10,7 +10,7 @@ export class AuthInterceptor implements HttpInterceptor {
     req = req.clone({
       headers: req.headers.set(
         "Authorization",
-        "Bearer " + localStorage.getItem('token')
+        "Bearer " + localStorage.getItem('auth_token')
       ),
       url: reqUrl +""+ req.url
     });

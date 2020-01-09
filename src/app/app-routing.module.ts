@@ -21,7 +21,7 @@ const routes: Routes = [
     component: HotelDetailsComponent
   },
   {
-    path: 'checkout/:id',
+    path: 'checkout',
     component: CheckoutComponent
   }
 
