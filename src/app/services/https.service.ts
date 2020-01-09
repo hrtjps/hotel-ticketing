@@ -51,6 +51,9 @@ export class HttpsService {
     console.log(this._url+'search_rooms/search?'+params);
     return this.http.get(this._url+'search_rooms/search?'+params);
   } 
+  getRoomsByHotelId(id) {
+    return this.http.get(this._url + `hotels/${id}/rooms`);
+  }
   getDetailInfo(id) {
     return this.http.get(this._url + `hotels/${id}`);
   }

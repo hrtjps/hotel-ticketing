@@ -10,6 +10,7 @@ import { HttpsService } from '../services/https.service';
 export class HotelDetailsComponent implements OnInit {
 
   hotel: any;
+  rooms: any;
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpsService
@@ -20,6 +21,10 @@ export class HotelDetailsComponent implements OnInit {
       this.http.getDetailInfo(params['id']).subscribe((data: any)=>{
         this.hotel = data.hotel;
         console.log(this.hotel);
+      })
+      this.http.getRoomsByHotelId(params['id']).subscribe((data:any)=> {
+        console.log(data);
+        this.rooms = data.rooms_data.room_types;
       })
     });
   }

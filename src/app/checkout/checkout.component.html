@@ -14,21 +14,22 @@
 
             <div class="card-body">
               <h6 class="col">Tell us about yourself</h6>
+              <mat-error *ngIf="errorMsg" class="p-3">{{errorMsg}}</mat-error>
 
-              <form class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <form name="form" [formGroup]="form" (ngSubmit)="room_booking()" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <section class="form-group">
                   <label class="fs-14 mb-1 text-500">Full Name</label>
-                  <input type="tetx" class="form-control form-control-sm">
+                  <input type="text" formControlName="fullName" class="form-control form-control-sm" >
                 </section>
 
                 <section class="form-group">
                   <label class="fs-14 mb-1 text-500">Email</label>
-                  <input type="tetx" class="form-control form-control-sm">
+                  <input type="email" formControlName="email" class="form-control form-control-sm">
                 </section>
 
                 <section class="form-group">
                   <label class="fs-14 mb-1 text-500">Retype Email</label>
-                  <input type="tetx" class="form-control form-control-sm">
+                  <input type="email" formControlName="confirmEmail" class="form-control form-control-sm">
                 </section>
 
                 <div class="form-row">
@@ -36,18 +37,18 @@
                     <label class="fs-14 mb-1 text-500">Phone Number</label>
                     <article class="row m-0">
                       <p class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 p-0">
-                        <input type="text" class="form-control form-control-sm" placeholder="+91">
+                        <input type="text" formControlName="countryCode" class="form-control form-control-sm" placeholder="+91">
                       </p>
 
                       <p class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 p-0 pl-md-2">
-                        <input type="text" class="form-control form-control-sm">
+                        <input type="text" formControlName="phoneNo" class="form-control form-control-sm">
                       </p>
                     </article>
                   </section>
 
                   <section class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 pl-0 pl-lg-3">
                     <label class="fs-14 mb-1 text-500">Country / Region of residence</label>
-                    <select class="form-control form-control-sm fs-14">
+                    <select class="form-control form-control-sm fs-14" formControlName="country">
                       <option>Choose</option>
                     </select>
                   </section>
