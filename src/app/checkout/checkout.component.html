@@ -15,6 +15,7 @@
             <div class="card-body">
               <h6 class="col">Tell us about yourself</h6>
               <mat-error *ngIf="errorMsg" class="p-3">{{errorMsg}}</mat-error>
+              <div *ngIf="successMsg" class="badge badge-success p-3 d-block">{{successMsg}}</div>
 
               <form name="form" [formGroup]="form" (ngSubmit)="room_booking()" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <section class="form-group">
@@ -107,21 +108,21 @@
         </section>
       </div>
 
-      <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 px-md-0">
+      <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 px-md-0" *ngIf="hotel">
         <div
           class="card flex-row flex-md-column flex-lg-row flex-xl-row flex-sm-row box-shadow detail-wrapper p-3 mb-4">
           <img alt="" class="card-img-right flex-auto rounded-lg mb-2 pr-3" src="../../assets/images/image3.png" width="50%">
 
           <div class="card-body pl-0 py-0">
             <section class=" p-0">
-              <h6 class="mb-0"> Hotel Name - Loreum Ipsum </h6>
+              <h6 class="mb-0"> {{hotel.name}} </h6>
 
-              <p class="mb-1 text-address">Hotel Address</p>
+              <p class="mb-1 text-address">{{hotel.address}}</p>
 
               <article class="mt-5">
                 <p class="rate-txt d-flex align-flex-end mb-0">
-                  <span class="rate rounded mr-1">4.5</span>
-                  <span>Awesome.</span><span class="m-0">1241 Reviews</span>
+                  <span class="rate rounded mr-1">{{hotel.ratings}}</span>
+                  <span>Awesome.</span><span class="m-0">{{hotel.reviews}} Reviews</span>
                 </p>
               </article>
             </section>
@@ -137,7 +138,7 @@
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-4">
               <section class="d-flex details">
                 <article class="left">
-                  <h6 class="m-0 fs-14">2 Jan 2020 - 3 Jan 2020</h6>
+                  <h6 class="m-0 fs-14">{{check_in}} - {{check_out}}</h6>
 
                   <p class="fs-13 mt-2">1 x 2 Single Beds in Mixed Dormitory Room</p>
 
@@ -191,8 +192,8 @@
                 </article>
 
                 <article class="right text-right">
-                  <p class="m-0 text-500 fs-14">INR000</p>
-                  <h5 class="m-0">INR0000</h5>
+                <p class="m-0 text-500 fs-14">INR {{hotel.actual_price}}</p>
+                  <h5 class="m-0">INR {{hotel.discount_price}}</h5>
                 </article>
               </section>
             </div>

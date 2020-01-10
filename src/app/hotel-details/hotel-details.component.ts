@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpsService } from '../services/https.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-hotel-details',
@@ -8,7 +9,7 @@ import { HttpsService } from '../services/https.service';
   styleUrls: ['./hotel-details.component.scss']
 })
 export class HotelDetailsComponent implements OnInit {
-
+  showAll: false;
   hotel: any;
   rooms: any;
   constructor(
@@ -19,8 +20,11 @@ export class HotelDetailsComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       this.http.getDetailInfo(params['id']).subscribe((data: any)=>{
-        this.hotel = data.hotel;
+        let string = JSON.stringify(data.hotel).replace(/http:\/\/localhost:2000\//g, environment.apiBaseUrl);
+        
+        this.hotel = JSON.parse(string);
         console.log(this.hotel);
+
       })
       this.http.getRoomsByHotelId(params['id']).subscribe((data:any)=> {
         console.log(data);

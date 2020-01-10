@@ -10,7 +10,7 @@
           <li> Home </li>
           <li> <span class="mx-2"> &gt; </span> Singapore </li>
           <li><span class="mx-2"> &gt; </span> Hotels</li>
-          <li><span class="mx-2"> &gt; </span> Hotel Name</li>
+          <li><span class="mx-2"> &gt; </span> {{hotel.name}}</li>
         </ol>
       </nav>
 
@@ -23,18 +23,36 @@
       <section class="row m-0 px-3 image-wrapper">
         <table class="table table-sm table-borderless">
           <tr>
-            <td width="45%">
-              <img src="../../assets/images/image3@2x.png" class="img-card-left img-lg">
-            </td>
-
-            <td width="55%">
-              <p><img src="../../assets/images/image3.png" class="img-card-right img-md"></p>
-              <p class="d-flex relative">
-                <img src="../../assets/images/image3.png" class="img-card-right img-sm">
-                <img src="../../assets/images/image3.png" class="img-card-right img-sm">
-                <a href="" class="btn btn-sm btn-link btn-ViewAll">View All Photos</a>
-              </p>
-            </td>
+            <ng-container *ngIf="showAll">
+              <a href="" class="btn btn-sm btn-link btn-ViewAll" (click)="showAll=false">Hide</a>
+              <!-- <td width="45%" *ngIf="i===0">
+                <img [src]="item" class="img-card-left img-lg">
+              </td>
+  
+              <td width="55%" *ngIf="i>0">
+                <p *ngIf="i===1"><img [src]="item" class="img-card-right img-md"></p>
+                <p class="d-flex relative" *ngIf="i>1">
+                  <img [src]="item" class="img-card-right img-sm">
+                  <img [src]="item" class="img-card-right img-sm">
+                  <a href="" class="btn btn-sm btn-link btn-ViewAll">View All Photos</a>
+                </p>
+              </td> -->
+            </ng-container>
+            <ng-container *ngIf="!showAll">
+                <td width="45%" *ngIf="hotel.images.length>0">
+                  <img [src]="hotel.images[0]" class="img-card-left img-lg">
+                </td>
+    
+                <td width="55%" *ngIf="hotel.images.length>1">
+                  <p ><img [src]="hotel.images[1]" class="img-card-right img-md"></p>
+                  <p class="d-flex relative" *ngIf="hotel.images.length>2">
+                    <img [src]="hotel.images[2]" class="img-card-right img-sm">
+                    <img *ngIf="hotel.images.length>3" [src]="hotel.images[3]" class="img-card-right img-sm">
+                    <a *ngIf="hotel.images.length>4"  href="" class="btn btn-sm btn-link btn-ViewAll" (click)="showAll=false">View All Photos</a>
+                  </p>
+                </td>
+            </ng-container>
+            
           </tr>
         </table>
       </section>
