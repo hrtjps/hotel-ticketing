@@ -10,7 +10,15 @@ import { Router } from '@angular/router';
 })
 export class BannerComponent implements OnInit {
   form: FormGroup;
-  constructor(private fb: FormBuilder, private router:Router) { }
+  no_of_adult=0;
+  no_of_children=0;
+  children=[];
+  ages=[];
+  constructor(private fb: FormBuilder, private router:Router) { 
+    for(let i=0; i<18; i++){
+      this.ages.push(i);
+    }
+  }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -36,6 +44,26 @@ export class BannerComponent implements OnInit {
     const momentDate = new Date(date); // Replace event.value with your date value
     const formattedDate = moment(momentDate).format("YYYY-MM-DD");
     return formattedDate;
+  }
+  update() {
+    this.form.controls.no_of_adult.setValue(
+      this.no_of_adult+ (this.no_of_adult===1?' Adult ':' Adults ')+
+      this.no_of_children+ (this.no_of_children===1?' Child':' Children')
+  }
+  changeNoOfAdult($e, val) {
+    $e.stopPropagation();
+    this.no_of_adult += val;
+    this.update();
+  }
+  changeNoOfChildren($e, val) {
+    $e.stopPropagation();
+    this.no_of_children += val;
+    if(val===1){
+      this.children.push(0)
+    } else {
+      this.children.pop()
+    }
+    this.update();
   }
 
 }

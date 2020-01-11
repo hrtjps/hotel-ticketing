@@ -29,10 +29,15 @@
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
       
-      <mat-form-field floatLabel="always" class="custom_formfield">
+      <mat-form-field floatLabel="always" class="custom_formfield" style="width: 180px">
           <mat-label>Guests</mat-label>
-          <input formControlName="no_of_adult" matInput placeholder="2 Adults 1 Child">
-      </mat-form-field>
+          <input readonly formControlName="no_of_adult" matInput placeholder="2 Adults 1 Child" [matMenuTriggerFor]="appMenu" >          
+          <!-- <div 
+            class="d-flex justify-content-between adults-child-no align-items-center">
+            <span>2 Adults 1 Child</span><mat-icon>unfold_more</mat-icon>
+          </div> -->
+          
+        </mat-form-field>
 
       <!--p class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-2 p-0 relative">
         <label>Guests</label>
@@ -49,3 +54,36 @@
     </section>
   </div>
 </div>
+<mat-menu #appMenu="matMenu" class="adults-child-selector" xPosition="before">
+  <div  (click)="$event.stopPropagation()">
+  <div class="group-row">
+    <span>Adults</span>
+    <div class="d-flex align-items-center">
+      <button mat-icon-button [disabled]="no_of_adult<1" (click)="changeNoOfAdult($event, -1)"><mat-icon>remove</mat-icon></button>
+      <div class="number">{{no_of_adult}}</div>
+      <button mat-icon-button (click)="changeNoOfAdult($event, 1)"><mat-icon>add</mat-icon></button>
+    </div>
+  </div>
+  <div class="group-row">
+    <span>Children</span>
+    <div class="d-flex align-items-center">
+      
+      <button mat-icon-button [disabled]="no_of_children<1" (click)="changeNoOfChildren($event, -1)"><mat-icon>remove</mat-icon></button>
+      <div class="number">{{no_of_children}}</div>
+      <button mat-icon-button (click)="changeNoOfChildren($event, 1)"><mat-icon>add</mat-icon></button>
+    </div>
+  </div>
+  <div *ngIf="no_of_children>0">
+    <div class="group-row">How old are the children you're traveling with?</div>
+    <div class="group-row">
+      <div class="d-flex flex-wrap">
+        <select *ngFor="let item of children" [(ngModel)]="item" class="age form-control form-control-sm  mr-2 mb-2" (click)="$event.stopPropagation()">
+          <option *ngFor="let age of ages" [value]="age">{{age}} years old</option>
+        </select>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+</mat-menu>

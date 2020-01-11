@@ -88,3 +88,28 @@
     padding-top: 0;
   }
 }
+
+
+.adults-child-selector {
+  background: white;
+  padding: 24px;
+  padding-bottom: 8px;
+  width: 370px;
+  max-width: unset !important;
+  margin-top: 20px;
+  .group-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      .number {
+        text-align: center;
+        min-width: 36px;
+        margin: 0 4px;
+      }
+      .age {
+        width: 150px;
+      }
+  }
+
+}
