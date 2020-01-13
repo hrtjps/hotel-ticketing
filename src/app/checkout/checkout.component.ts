@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpsService } from '../services/https.service';
+import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -19,10 +20,12 @@ export class CheckoutComponent implements OnInit {
   hotel;
   errorMsg;
   successMsg;
+  response_data:any;
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpsService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -35,7 +38,6 @@ export class CheckoutComponent implements OnInit {
       this.no_of_child = params['no_of_child'];
       this.http.getDetailInfo(this.hotel_id).subscribe((data: any)=>{
         this.hotel = data.hotel;
-        console.log(this.hotel);
       })
     })
     this.form = this.formBuilder.group({
@@ -52,9 +54,9 @@ export class CheckoutComponent implements OnInit {
     this.errorMsg="";
     this.successMsg="";
     if(this.form.invalid){
-      
+
       this.errorMsg="Please input all valid info.(email and name) "; // + this.form.getError('email')
-      
+
       return ;
     }
     this.http.room_booking({
@@ -72,8 +74,13 @@ export class CheckoutComponent implements OnInit {
       // coupon_code: "qwerty"
 
     }).subscribe(data => {
-      console.log(data)
-      this.successMsg = "Room booked Successfully"
+      this.response_data = data;
+      console.log(this.response_data);
+      if(this.response_data.status == true){
+        this.router.navigate(['/thank-you']);
+      }else{
+        this.errorMsg = this.response_data.message;
+      }
     },
     error=>{
       this.errorMsg = error.error.errors;

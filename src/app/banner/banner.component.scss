@@ -3,63 +3,48 @@
     background-size: 100% 100%;
     padding: 10rem 2rem;
     border-radius: 0;
+    display: flex;
 
     h1 {
         color: #fff;
         font-size: 34px;
-    } 
-    form{
-        display: flex;
-        @media (max-width:1024px) {
-            
-            margin-right: auto;
-            margin-left: auto;
-            width: 100%;
-            max-width: 400px;
-            .mat-form-field {
-                margin-bottom: 10px;
-                width: 100%;
-                border-radius: 13px;
-
-            }
-            flex-direction: column;   
-        }
-        .custom_formfield{
-            background-color: #fff;
-            height: 68px;
-            padding: 14px 0px 0 10px;              
-
-            .mat-form-field.mat-focused,
-            .mat-form-field-outline,
-            .mat-form-field-empty.mat-form-field-label,
-            .mat-form-field-label,
-            .mat-form-field-underline,
-            .mat-input-element,
-            ::placeholder {
-            color: rgba(73, 80, 87, 0.8)  !important;
-            font-weight: 500; 
-            }&.input-first {
-                border-radius: 13px 0 0 13px;    
-                height: 67.5px;   
-                
-                @media (max-width:1024px) {
-                 border-radius: 0 0 0 0;
-                 border-radius: 13px;
-                }
-            }
-        }
-        .mat-datepicker-toggle {
-            display: none;
-        }
-        ::ng-deep .mat-form-field-label{
-            color: #bbb  !important;    
-            font-size: 16px;
-            font-weight: 500; 
-        }
-    
     }
+
+
     .search-wrapper {
         padding-top: 20px;
+        form{
+          display: inherit;
+          .custom_formfield{
+              background-color: #fff;
+              height: 67px;
+              padding: 14px 0px 0 10px;
+              min-width: 190px;
+
+              .mat-form-field.mat-focused,
+              .mat-form-field-outline,
+              .mat-form-field-empty.mat-form-field-label,
+              .mat-form-field-label,
+              .mat-form-field-underline,
+              .mat-input-element,
+              ::placeholder {
+              color: rgba(73, 80, 87, 0.8)  !important;
+              font-weight: 500;
+              }&.input-first {
+                  border-radius: 13px 0 0 13px;
+                  height: 67.5px;
+              }
+          }
+          .mat-datepicker-toggle {
+              display: none;
+          }
+          ::ng-deep .mat-form-field-label{
+              color: #bbb  !important;
+              font-size: 16px;
+              font-weight: 500;
+          }
+
+      }
 
         label {
             position: absolute;
@@ -75,12 +60,14 @@
             padding: 20px 15px 0;
             border: 0;
             border-radius: 0;
-            color: #111;          
+            color: #111;
             font-weight: 500;
-
+            margin: 0px;
+            //width: 250px;
+            min-width: 190px;
             &.input-first {
-                border-radius: 13px 0 0 13px;    
-                height: 67.5px;   
+                border-radius: 13px 0 0 13px;
+                height: 67.5px;
             }
         }
 
@@ -88,14 +75,37 @@
             font-size: 13px;
             font-weight: 500;
             padding: 23px 32px;
-            border-radius: 0 13px 13px 0;       
+            min-height: 68px;
+            text-transform: uppercase;
+            border-radius: 0 13px 13px 0;
         }
-    } 
+    }
+}
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: url(/assets/images/GFX-MWA-Parks-Reservations.png) no-repeat;
+    width: 20px;
+    height: 20px;
+    border-width: thin;
+}
+.ng-autocomplete{
+    width: auto;
+}
+.ng-autocomplete .autocomplete-container{
+    height:auto !important;
+    box-shadow: none !important;
+    position: unset !important;
 }
 
 /*** Mobile View ***/
 
-@media (max-width: 767.98px) { 
+@media (max-width: 767.98px) {
     .banner-wrapper {
         padding: 1.25rem 2rem;
 
@@ -115,12 +125,12 @@
 
             .btn-search {
                 padding: 14px 32px;
-                border-radius: 5px; 
+                border-radius: 5px;
                 width: 100%;
-                color: #fff;      
+                color: #fff;
                 font-size: 15px;
             }
-        } 
+        }
     }
 }
 
@@ -128,5 +138,5 @@
     cursor: pointer;
     color:rgba(73, 80, 87, 0.8) !important;
     font-weight: 500;
-    height: 18px;    
+    height: 18px;
 }

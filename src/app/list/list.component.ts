@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpsService } from '../services/https.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list',
@@ -24,6 +25,9 @@ export class ListComponent implements OnInit {
       const no_of_adult = params['no_of_adult'];
       let queryParams = 'city='+city+'&check_in='+check_in+'&check_out='+check_out+'&no_of_adult='+no_of_adult;
       this.http.searchRoom(queryParams).subscribe(data=>{
+        let string = JSON.stringify(data).replace(/http:\/\/localhost:2000\//g, environment.apiBaseUrl);
+        
+        data = JSON.parse(string);
         console.log(data)
         this._hotelsData = data;
         if(this._hotelsData.hotels_data){

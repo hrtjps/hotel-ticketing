@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: "http://27233cae.ngrok.io"
+  apiBaseUrl: "http://wwalks.ngrok.io/"
+  // apiBaseUrl: "http://localhost:2000/"
 };
 
 /*

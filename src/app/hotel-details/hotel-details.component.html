@@ -21,40 +21,17 @@
       </section>
 
       <section class="row m-0 px-3 image-wrapper">
-        <table class="table table-sm table-borderless">
-          <tr>
-            <ng-container *ngIf="showAll">
-              <a href="" class="btn btn-sm btn-link btn-ViewAll" (click)="showAll=false">Hide</a>
-              <!-- <td width="45%" *ngIf="i===0">
-                <img [src]="item" class="img-card-left img-lg">
-              </td>
-  
-              <td width="55%" *ngIf="i>0">
-                <p *ngIf="i===1"><img [src]="item" class="img-card-right img-md"></p>
-                <p class="d-flex relative" *ngIf="i>1">
-                  <img [src]="item" class="img-card-right img-sm">
-                  <img [src]="item" class="img-card-right img-sm">
-                  <a href="" class="btn btn-sm btn-link btn-ViewAll">View All Photos</a>
-                </p>
-              </td> -->
-            </ng-container>
-            <ng-container *ngIf="!showAll">
-                <td width="45%" *ngIf="hotel.images.length>0">
-                  <img [src]="hotel.images[0]" class="img-card-left img-lg">
-                </td>
-    
-                <td width="55%" *ngIf="hotel.images.length>1">
-                  <p ><img [src]="hotel.images[1]" class="img-card-right img-md"></p>
-                  <p class="d-flex relative" *ngIf="hotel.images.length>2">
-                    <img [src]="hotel.images[2]" class="img-card-right img-sm">
-                    <img *ngIf="hotel.images.length>3" [src]="hotel.images[3]" class="img-card-right img-sm">
-                    <a *ngIf="hotel.images.length>4"  href="" class="btn btn-sm btn-link btn-ViewAll" (click)="showAll=false">View All Photos</a>
-                  </p>
-                </td>
-            </ng-container>
-            
-          </tr>
-        </table>
+        <div *ngIf="hotel.images.length>0" class="w-100">
+          <div class="w-100 d-flex justify-content-center py-2">
+            <img [src]="hotel.images[selected]" class="selected-image">
+          </div>
+          <div class="d-flex justify-content-center flex-wrap w-100">
+            <div *ngFor="let item of hotel.images; let i=index" class="p-2">
+              <img [src]="item"
+                class="img-thumbnail" [ngClass]="{'selected': i === selected}" (click)="selected=i">
+            </div>
+          </div>          
+        </div>
       </section>
 
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -148,78 +125,8 @@
               <p class="fs-10 mt-1 text-danger"> Last Booked in 20 mins!</p>
 
               <section class="row bg-grey">
-                <article class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-2 p-2">
-                  <section class="image-wrapper">
-                    <table class="table table-sm table-borderless m-0">
-                      <tr>
-                        <td>
-                          <p><img src="../../assets/images/image3.png" class="img-card-right mw-100"></p>
-                          <p class="d-flex">
-                            <img src="../../assets/images/image3.png" class="img-card-right img-card-sm">
-                            <img src="../../assets/images/image3.png" class="img-card-right img-card-sm">
-                          </p>
-                        </td>
-                      </tr>
-                    </table>
-                  </section>
-
-                  <ul class="list-unstyled">
-                    <li>
-                      <label class="custom-radioButton m-0">
-                        <span class="rb-value">Facilities</span>
-                        <input type="radio" name="credInvolved">
-                        <span class="checkmark"></span>
-                      </label>
-                    </li>
-
-                    <li>
-                      <label class="custom-radioButton m-0">
-                        <span class="rb-value">Facilities</span>
-                        <input type="radio" name="credInvolved">
-                        <span class="checkmark"></span>
-                      </label>
-                    </li>
-
-                    <li>
-                      <label class="custom-radioButton m-0">
-                        <span class="rb-value">Facilities</span>
-                        <input type="radio" name="credInvolved">
-                        <span class="checkmark"></span>
-                      </label>
-                    </li>
-
-                    <li>
-                      <label class="custom-radioButton m-0">
-                        <span class="rb-value">Facilities</span>
-                        <input type="radio" name="credInvolved">
-                        <span class="checkmark"></span>
-                      </label>
-                    </li>
-
-                    <li>
-                      <label class="custom-radioButton m-0">
-                        <span class="rb-value">Facilities</span>
-                        <input type="radio" name="credInvolved">
-                        <span class="checkmark"></span>
-                      </label>
-                    </li>
-
-                    <li>
-                      <label class="custom-radioButton m-0">
-                        <span class="rb-value">Facilities</span>
-                        <input type="radio" name="credInvolved">
-                        <span class="checkmark"></span>
-                      </label>
-                    </li>
-
-                    <li>
-                      <label class="custom-radioButton m-0">
-                        <span class="rb-value">Facilities</span>
-                        <input type="radio" name="credInvolved">
-                        <span class="checkmark"></span>
-                      </label>
-                    </li>
-                  </ul>
+                <article class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-2 p-2 room-image-wrapper">
+                    <img src="../../assets/images/image3.png" class="img-card-right mw-100">
                 </article>
 
                 <article class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-10">
@@ -242,42 +149,21 @@
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0">
                       <section class="row mx-0 bg-white rounded">
                         <article class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 p-3 border-right">
-                          <p class="fs-13 mb-2">Your Price includes:</p>
-
-                          <ul class="list-unstyled m-0">
+                          <ul class="list-unstyled m-0 include_options">
                             <li>
-                              <label class="custom-radioButton m-0">
-                                <span class="rb-value">Whats included</span>
-                                <input type="radio" name="credInvolved">
-                                <span class="checkmark"></span>
-                              </label>
+                              <p class="rb-value">Room Size: <label>{{item.room_size}}</label></p>
                             </li>
-
                             <li>
-                              <label class="custom-radioButton m-0">
-                                <span class="rb-value">Whats included</span>
-                                <input type="radio" name="credInvolved">
-                                <span class="checkmark"></span>
-                              </label>
+                              <p class="rb-value">Bed Size: <label>{{item.bed_size}}</label></p>
                             </li>
-
-                            <li>
-                              <label class="custom-radioButton m-0">
-                                <span class="rb-value">Whats included</span>
-                                <input type="radio" name="credInvolved">
-                                <span class="checkmark"></span>
-                              </label>
+                            <li *ngIf="item.include_breakfast">
+                              <p class="rb-value">Include Breakfast<label></label></p>
                             </li>
-                          </ul>
+                            </ul>
                         </article>
 
                         <article class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 pl-0 pr-3 py-3 border-right">
-                          <span class="bg-red py-2 px-1 text-light fs-13 mt-2 rounded-right">
-                            <i class="fa fa-bomb" aria-hidden="true"></i>
-                            Last minute deal!
-                          </span>
-                          <p class="txt-inr-sm text-right-md pl-3 pt-3 m-0 fs-13">INR {{item.price}}</p>
-                          <h5 class="m-0 text-right-md pl-3">INR {{item.price}}<small class="fs-9 d-block">/Night</small></h5>
+                          <h5 class="m-0 text-right-md pl-3 price">INR {{item.price}}</h5>
                         </article>
 
                         <article class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 p-3 border-right">
@@ -285,66 +171,15 @@
                         </article>
 
                         <article class="col-12 col-sm-6 col-md-2 col-lg-2 col-xl-2 p-3">
-                          <button type="button" class="btn btn-sm btn-save" 
+                          <button type="button" class="btn btn-sm btn-save"
                           [routerLink]="['/checkout']"
                           [queryParams]="{hotel_id: hotel.id, room_id: item.id, checkout: hotel.checkout, checkin: hotel.checkin, no_of_adult: 0, no_of_child:0}"
-                          >Show Rooms</button>
+                          >Book Rooms</button>
                         </article>
                       </section>
                     </div>
                   </div>
 
-                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0">
-                    <section class="row mx-0 bg-white rounded">
-                      <article class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 p-3 border-right">
-                        <p class="fs-13 mb-2">Your Price includes:</p>
-
-                        <ul class="list-unstyled m-0">
-                          <li>
-                            <label class="custom-radioButton m-0">
-                              <span class="rb-value">Whats included</span>
-                              <input type="radio" name="credInvolved">
-                              <span class="checkmark"></span>
-                            </label>
-                          </li>
-
-                          <li>
-                            <label class="custom-radioButton m-0">
-                              <span class="rb-value">Whats included</span>
-                              <input type="radio" name="credInvolved">
-                              <span class="checkmark"></span>
-                            </label>
-                          </li>
-
-                          <li>
-                            <label class="custom-radioButton m-0">
-                              <span class="rb-value">Whats included</span>
-                              <input type="radio" name="credInvolved">
-                              <span class="checkmark"></span>
-                            </label>
-                          </li>
-                        </ul>
-                      </article>
-
-                      <article
-                        class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 pl-0 pr-3 py-3 border-right text-right-md pl-3">
-                        <h6 class="text-success fs-13 text-400">Deal of the day!</h6>
-                        <p class="txt-inr-sm m-0 fs-13">INR {{item.price}}</p>
-                        <h5 class="m-0">INR {{item.price}}<small class="fs-9 d-block">/Night</small></h5>
-                      </article>
-
-                      <article class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 p-3 border-right">
-                        <input type="number" class="form-control form-control-sm" placeholder="1" value="">
-                      </article>
-
-                      <article class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 p-3">
-                        <button type="button" class="btn btn-sm btn-save"
-                          [routerLink]="['/checkout']"
-                          [queryParams]="{hotel_id: hotel.id, room_id: item.id, checkout: hotel.checkout, checkin: hotel.checkin, no_of_adult: item.no_of_adult, no_of_child:item.no_of_child}"
-                        >Show Rooms</button>
-                      </article>
-                    </section>
-                  </div>
                 </article>
               </section>
             </article>

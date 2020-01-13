@@ -64,11 +64,11 @@
 }
 
 .ratio-img {
-    
+
     position: relative;
     width: 100%;
     padding-top: 120%; /* 1:1 Aspect Ratio */
-    
+
     .content-img {
         position: absolute;
         top: 0;
@@ -88,7 +88,6 @@
     padding-top: 0;
   }
 }
-
 
 .adults-child-selector {
   background: white;

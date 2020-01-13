@@ -1,16 +1,16 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { HeaderComponent } from "./header/header.component";
-import { BannerComponent } from "./banner/banner.component";
-import { HomeComponent } from "./home/home.component";
-import { FooterComponent } from "./footer/footer.component";
-import { SidebarComponent } from "./sidebar/sidebar.component";
-import { ListComponent } from "./list/list.component";
-import { HotelDetailsComponent } from "./hotel-details/hotel-details.component";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { BannerComponent } from './banner/banner.component';
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ListComponent } from './list/list.component';
+import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
   MatButtonModule,
@@ -24,11 +24,14 @@ import {
   MatDialogModule,
   MatMenuModule
 } from "@angular/material";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpsService } from "./services/https.service";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { AuthInterceptor } from "./services/auth.interceptor";
-import { CheckoutComponent } from "./checkout/checkout.component";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpsService } from './services/https.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { ThankYouComponent } from './thank-you/thank-you.component';
+import { GooglePlacesDirective } from './banner/google-places.directive';
 
 @NgModule({
   declarations: [
@@ -40,11 +43,14 @@ import { CheckoutComponent } from "./checkout/checkout.component";
     SidebarComponent,
     ListComponent,
     HotelDetailsComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ThankYouComponent,
+    GooglePlacesDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AutocompleteLibModule,
     BrowserAnimationsModule,
     // Custom
     MatButtonModule,
@@ -59,11 +65,10 @@ import { CheckoutComponent } from "./checkout/checkout.component";
     MatMenuModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     HttpsService,
-
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
@@ -72,4 +77,4 @@ import { CheckoutComponent } from "./checkout/checkout.component";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

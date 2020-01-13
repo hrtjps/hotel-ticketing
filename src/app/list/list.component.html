@@ -60,9 +60,9 @@
         </ol>
       </nav>
 
-      <section class="row align-center m-0">
+      <section class="row align-center m-0" *ngIf="_hotelsList">
         <article class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-          <h5 class="m-0">67 Hotels Found :)</h5>
+          <h5 class="m-0">{{ this._hotelsData.pagination_data.total_entries}} Hotels Found :)</h5>
         </article>
 
         <article class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 form-inline justify-content-end">
@@ -78,7 +78,7 @@
             <section class="d-flex align-baseline">
               <div *ngIf="hotel.images.length > 0">
                 <p *ngFor="let src of hotel.images  | slice:0:1; let i=index">
-                  <img class="card-img-right flex-auto rounded-lg mb-2" alt="" [src]="src.url">
+                  <img class="card-img-right flex-auto rounded-lg mb-2" alt="" [src]="src">
                 </p>
               </div>
               <img *ngIf="hotel.images.length == 0" class="card-img-right flex-auto rounded-lg mb-2" alt=""
@@ -131,9 +131,9 @@
 
                 <section class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3 pr-0">
                   <article class="text-right">
-                    <h6 class="txt-inr-sm m-0">$ {{ hotel.price }}</h6>
+                    <h6 class="txt-inr-sm m-0">$ {{ hotel.actual_price }}</h6>
 
-                    <h5 class="m-0">$ {{ hotel.price }}<small class="fs-9 d-block">/Night</small></h5>
+                    <h5 class="m-0">$ {{ hotel.discount_price }}<small class="fs-9 d-block">/Night</small></h5>
 
 
                     <h6 class="text-success fs-14 text-400">Free Cancellation</h6>

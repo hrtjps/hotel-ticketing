@@ -7,6 +7,8 @@ import { ListComponent } from './list/list.component';
 import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 
+import { ThankYouComponent } from './thank-you/thank-you.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -23,6 +25,10 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent
+  },
+  {
+    path: 'thank-you',
+    component: ThankYouComponent
   }
 
 ];

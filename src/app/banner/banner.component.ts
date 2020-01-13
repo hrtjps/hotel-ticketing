@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import * as moment from 'moment';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-banner',
   templateUrl: './banner.component.html',
@@ -10,16 +9,19 @@ import { Router } from '@angular/router';
 })
 export class BannerComponent implements OnInit {
   form: FormGroup;
+
+  keyword = 'name';
+  data = {indate:'',outdate:'', city:'', adult_count:0, child_count: 0};
+
   no_of_adult=0;
   no_of_children=0;
   children=[];
   ages=[];
-  constructor(private fb: FormBuilder, private router:Router) { 
+  constructor(private fb: FormBuilder, private router:Router) {
     for(let i=0; i<18; i++){
       this.ages.push(i);
     }
   }
-
   ngOnInit() {
     this.form = this.fb.group({
       city: ['', Validators.required],
@@ -28,10 +30,31 @@ export class BannerComponent implements OnInit {
       no_of_adult: ['', Validators.required],
     });
   }
-
+  update() {
+      this.form.controls.no_of_adult.setValue(
+        this.no_of_adult+ (this.no_of_adult===1?' Adult ':' Adults ')+
+        this.no_of_children+ (this.no_of_children===1?' Child':' Children')
+      );
+    }
+    changeNoOfAdult($e, val) {
+      $e.stopPropagation();
+      this.no_of_adult += val;
+      this.update();
+    }
+    changeNoOfChildren($e, val) {
+      $e.stopPropagation();
+      this.no_of_children += val;
+      if(val===1){
+        this.children.push(0)
+      } else {
+        this.children.pop()
+      }
+      this.update();
+    }
   search(){
+    console.log('clciked');
     if(this.form.invalid){
-
+      console.log('invalid ')
     }else{
       const check_in = this.changeDateFormat(this.form.controls['check_in'].value);
       const check_out = this.changeDateFormat(this.form.controls['check_out'].value);
@@ -45,25 +68,44 @@ export class BannerComponent implements OnInit {
     const formattedDate = moment(momentDate).format("YYYY-MM-DD");
     return formattedDate;
   }
-  update() {
-    this.form.controls.no_of_adult.setValue(
-      this.no_of_adult+ (this.no_of_adult===1?' Adult ':' Adults ')+
-      this.no_of_children+ (this.no_of_children===1?' Child':' Children'))
-  }
-  changeNoOfAdult($e, val) {
-    $e.stopPropagation();
-    this.no_of_adult += val;
-    this.update();
-  }
-  changeNoOfChildren($e, val) {
-    $e.stopPropagation();
-    this.no_of_children += val;
-    if(val===1){
-      this.children.push(0)
-    } else {
-      this.children.pop()
+
+
+  selectEvent(item) {
+    // do something with selected item
+    if(item.name){
+      this.form.controls['city'].setValue(item.name);
     }
-    this.update();
   }
 
+  onChangeSearch(val: string) {
+    // fetch remote data from here
+    // And reassign the 'data' which is binded to 'data' property.
+  }
+
+  onFocused(e){
+    // do something when input is focused
+  }
+  onCity(val){
+    this.data.city = val;
+  }
+
+  incrementAdult(event){
+    event.preventDefault();
+    this.data.adult_count+=1;
+  }
+
+  decrementAdult(){
+    if(this.data.adult_count > 0){
+      this.data.adult_count-=1;
+    }
+  }
+  dateChange(event){
+    let newdate = new Date();
+    let d: Array<any> = this.data.indate.split('/');
+    newdate.setDate(d[0]);
+    newdate.setMonth(d[1]);
+    newdate.setFullYear(d[2]);
+    this.data.outdate = moment(newdate).add(1, 'days').format('DD/MM/YYYY');
+    console.log(this.data.outdate);
+  }
 }

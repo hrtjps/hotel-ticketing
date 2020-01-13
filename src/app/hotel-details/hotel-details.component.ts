@@ -12,6 +12,7 @@ export class HotelDetailsComponent implements OnInit {
   showAll: false;
   hotel: any;
   rooms: any;
+  selected=0;
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpsService
