@@ -9,7 +9,21 @@
         font-size: 34px;
     } 
     form{
-        display: inherit;
+        display: flex;
+        @media (max-width:1024px) {
+            
+            margin-right: auto;
+            margin-left: auto;
+            width: 100%;
+            max-width: 400px;
+            .mat-form-field {
+                margin-bottom: 10px;
+                width: 100%;
+                border-radius: 13px;
+
+            }
+            flex-direction: column;   
+        }
         .custom_formfield{
             background-color: #fff;
             height: 68px;
@@ -27,6 +41,11 @@
             }&.input-first {
                 border-radius: 13px 0 0 13px;    
                 height: 67.5px;   
+                
+                @media (max-width:1024px) {
+                 border-radius: 0 0 0 0;
+                 border-radius: 13px;
+                }
             }
         }
         .mat-datepicker-toggle {

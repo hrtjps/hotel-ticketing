@@ -48,7 +48,7 @@ export class BannerComponent implements OnInit {
   update() {
     this.form.controls.no_of_adult.setValue(
       this.no_of_adult+ (this.no_of_adult===1?' Adult ':' Adults ')+
-      this.no_of_children+ (this.no_of_children===1?' Child':' Children')
+      this.no_of_children+ (this.no_of_children===1?' Child':' Children'))
   }
   changeNoOfAdult($e, val) {
     $e.stopPropagation();
