@@ -30,31 +30,60 @@
         </ul>
       </nav>
 
-      <article class="row m-0 px-3 search-wrapper">
+      <form class="row m-0 px-3 search-wrapper"
+        (ngSubmit)="search()"
+        [formGroup]="form"
+      >
         <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 relative">
           <label>Hotel / City</label>
-          <input type="text" class="form-control input-control input-first" placeholder="e.g. Singapore">
+          <input 
+            formControlName="city" 
+            type="text" class="form-control input-control input-first" placeholder="e.g. Singapore"
+            
+            (onSelect)="onCity(val)"
+            google-place >
         </p>
 
-        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 relative">
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 relative"
+        (click)="picker.open()" >
           <label>Check In</label>
-          <input type="text" class="form-control input-control" placeholder="DD/MM/YYYY">
+          <input type="text" class="form-control input-control" placeholder="DD/MM/YYYY"
+          
+            [min]="minDate"
+            formControlName="check_in"
+            [matDatepicker]="picker"
+          >
+          
+          <mat-datepicker #picker></mat-datepicker>
         </p>
 
-        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 relative">
+        <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 relative"
+          (click)="picker2.open()">
           <label>Check Out</label>
-          <input type="text" class="form-control input-control" placeholder="DD/MM/YYYY">
+          <input type="text" class="form-control input-control" placeholder="DD/MM/YYYY"
+          
+          formControlName="check_out"
+          [matDatepicker]="picker2"
+          [min]="form.value['check_in']"
+          >
+          <mat-datepicker #picker2></mat-datepicker>
         </p>
 
         <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 relative">
           <label>Guests</label>
-          <input type="text" class="form-control input-control" placeholder="2 Adults 1 Child">
+          <input type="text" class="form-control input-control"
+          readonly
+          formControlName="no_of_adult"
+          matInput
+          placeholder="2 Adults 1 Child"
+          [matMenuTriggerFor]="appMenu"
+          >
         </p>
 
         <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 relative">
-          <input type="button" class="btn btn-search p-2 btn-block btn-warning" value="Search">
+          <input type="submit" class="btn btn-search p-2 btn-block btn-warning" value="Search">
         </p>
-      </article>
+      </form>
     </article>
   </section>
 
@@ -306,3 +335,59 @@
     </article>
   </section>
 </div>
+
+<mat-menu #appMenu="matMenu" class="adults-child-selector" xPosition="before">
+  <div (click)="$event.stopPropagation()">
+    <div class="group-row">
+      <span>Adults</span>
+      <div class="d-flex align-items-center">
+        <button
+          mat-icon-button
+          [disabled]="no_of_adult < 1"
+          (click)="changeNoOfAdult($event, -1)"
+        >
+          <mat-icon>remove</mat-icon>
+        </button>
+        <div class="number">{{ no_of_adult }}</div>
+        <button mat-icon-button (click)="changeNoOfAdult($event, 1)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="group-row">
+      <span>Children</span>
+      <div class="d-flex align-items-center">
+        <button
+          mat-icon-button
+          [disabled]="no_of_children < 1"
+          (click)="changeNoOfChildren($event, -1)"
+        >
+          <mat-icon>remove</mat-icon>
+        </button>
+        <div class="number">{{ no_of_children }}</div>
+        <button mat-icon-button (click)="changeNoOfChildren($event, 1)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="no_of_children > 0">
+      <div class="group-row">
+        How old are the children you're traveling with?
+      </div>
+      <div class="group-row">
+        <div class="d-flex flex-wrap">
+          <select
+            *ngFor="let item of children"
+            [(ngModel)]="item"
+            class="age form-control form-control-sm  mr-2 mb-2"
+            (click)="$event.stopPropagation()"
+          >
+            <option *ngFor="let age of ages" [value]="age"
+              >{{ age }} years old</option
+            >
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-menu>
