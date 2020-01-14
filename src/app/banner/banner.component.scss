@@ -14,7 +14,22 @@
     .search-wrapper {
         padding-top: 20px;
         form{
-          display: inherit;
+            
+        display: flex;
+        @media (max-width:1024px) {
+            
+            margin-right: auto;
+            margin-left: auto;
+            width: 100%;
+            max-width: 400px;
+            .mat-form-field {
+                margin-bottom: 10px;
+                width: 100%;
+                border-radius: 13px;
+
+            }
+            flex-direction: column;   
+        }
           .custom_formfield{
               background-color: #fff;
               height: 67px;

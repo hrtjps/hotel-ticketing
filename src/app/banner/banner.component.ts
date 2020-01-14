@@ -21,7 +21,7 @@ export class BannerComponent implements OnInit {
   children=[];
   ages=[];
   selected;
-  minDate: _moment.Moment;
+  minDate;
   constructor(private fb: FormBuilder, private router:Router) {
     for(let i=0; i<18; i++){
       this.ages.push(i);
@@ -34,7 +34,7 @@ export class BannerComponent implements OnInit {
       check_out: ['', Validators.required],
       no_of_adult: ['', Validators.required],
     });
-    this.minDate =  moment();
+    this.minDate =  new Date();
   }
   update() {
       this.form.controls.no_of_adult.setValue(
