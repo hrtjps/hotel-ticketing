@@ -71,8 +71,14 @@ export class CheckoutComponent implements OnInit {
       check_out: "2020-02-02",
       // room_id: [1],
       hotel_id: 1,
-      // coupon_code: "qwerty"
-
+      // coupon_code: "qwerty",
+      use_wallet: 0,
+      wallet_amount: 0,
+      price: 0,
+      customer_name: this.form.value.fullName,
+      phone_number: this.form.value.phoneNo,
+      country: this.form.value.country,
+      country_code: this.form.value.countryCode,
     }).subscribe(data => {
       this.response_data = data;
       console.log(this.response_data);

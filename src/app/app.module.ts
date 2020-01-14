@@ -33,6 +33,8 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { GooglePlacesDirective } from './banner/google-places.directive';
 
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,6 +68,7 @@ import { GooglePlacesDirective } from './banner/google-places.directive';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxDaterangepickerMd.forRoot(),
   ],
   providers: [
     HttpsService,

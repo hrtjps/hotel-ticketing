@@ -112,3 +112,9 @@
   }
 
 }
+
+ngx-daterangepicker-material {
+  .md-drppicker {
+      min-width: 500px !important;
+  }
+}

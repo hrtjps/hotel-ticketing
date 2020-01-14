@@ -43,6 +43,10 @@
               font-size: 16px;
               font-weight: 500;
           }
+          .daterange-picker {
+              min-width: 300px;
+
+          }
 
       }
 
@@ -139,4 +143,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color:rgba(73, 80, 87, 0.8) !important;
     font-weight: 500;
     height: 18px;
+}
+.min-300px {
+    min-width: 300px;
 }

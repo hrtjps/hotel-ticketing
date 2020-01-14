@@ -5,75 +5,128 @@
     <h1 class="text-400">Hotel Bookings with just a click.</h1>
 
     <section class="row m-0 search-wrapper">
-
       <form (ngSubmit)="search()" [formGroup]="form">
-      <p class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-2 p-0 relative">
-        <label>Hotel / City</label>
-        <!-- <input type="text" class="form-control input-control input-first" placeholder="e.g. Singapore"> -->
-        <input formControlName="city" type="text" class="form-control input-control input-first" placeholder="e.g. Singapore" (onSelect)="onCity(val)" google-place>
-      </p>
+        <p class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-2 p-0 relative ">
+          <label>Hotel / City</label>
+          <!-- <input type="text" class="form-control input-control input-first" placeholder="e.g. Singapore"> -->
+          <input
+            formControlName="city"
+            type="text"
+            class="form-control input-control input-first"
+            placeholder="e.g. Singapore"
+            (onSelect)="onCity(val)"
+            google-place
+          />
+        </p>
 
-      
-      <p class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-2 p-0 relative">
-        <label>Check In</label>
-        <!-- <input type="text" class="form-control input-control" placeholder="DD/MM/YYYY"> -->
-        <input formControlName="check_in" class="form-control input-control" type="date">
-        <!-- <div class="input-group date" data-provide="datepicker">
+        <p class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 p-0 relative daterange-picker">
+          <label>Check In - Check Out</label>
+          <!-- <input type="text" class="form-control input-control" placeholder="DD/MM/YYYY"> -->
+          <!-- <input formControlName="check_in" class="form-control input-control" type="date"> -->
+          <!-- <div class="input-group date" data-provide="datepicker">
           <input type="text" class="form-control">
           <div class="input-group-addon">
               <span class="glyphicon glyphicon-th"></span>
           </div>
         </div> -->
-      </p>
+          <input
+            type="text"
+            matInput
+            ngxDaterangepickerMd
+            class="form-control input-control "
+            [locale]="{ applyLabel: 'ok', format: 'DD-MM-YYYY' }"
+            startKey="start"
+            endKey="end"
+            formControlName="check_in"
+            name="daterange"
+            showCancel
+            [minDate]="minDate"
+          />
+          <!-- <ngx-daterangepicker-material >
+          </ngx-daterangepicker-material> -->
+        </p>
 
-      <p class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-2 p-0 relative">
+        <!-- <p class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-2 p-0 relative">
         <label>Check Out</label>
-        <!-- <input type="text" class="form-control input-control" placeholder="DD/MM/YYYY"> -->
+        <input type="text" class="form-control input-control" placeholder="DD/MM/YYYY">
         <input formControlName="check_out" class="datepicker form-control input-control" type="date">
-      </p>
+      </p> -->
 
-      <p class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-2 p-0 relative">
-        <label>Guests</label>
-        <input class="input-control" readonly formControlName="no_of_adult" matInput placeholder="2 Adults 1 Child" [matMenuTriggerFor]="appMenu" >
-      </p>
+        <p class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-2 p-0 relative">
+          <label>Guests</label>
+          <input
+            class="input-control"
+            readonly
+            formControlName="no_of_adult"
+            matInput
+            placeholder="2 Adults 1 Child"
+            [matMenuTriggerFor]="appMenu"
+          />
+        </p>
 
-      <p class="col-12  col-sm-12 col-md-2 col-lg-2  col-xl-3 p-0 relative">
-        <input type="submit" class="btn  btn-search btn-warning" value="Search">
-      </p>
-    </form>
+        <p class="col-12  col-sm-12 col-md-2 col-lg-2  col-xl-3 p-0 relative">
+          <input
+            type="submit"
+            class="btn  btn-search btn-warning"
+            value="Search"
+          />
+        </p>
+      </form>
     </section>
   </div>
 </div>
 <mat-menu #appMenu="matMenu" class="adults-child-selector" xPosition="before">
-  <div  (click)="$event.stopPropagation()">
-  <div class="group-row">
-    <span>Adults</span>
-    <div class="d-flex align-items-center">
-      <button mat-icon-button [disabled]="no_of_adult<1" (click)="changeNoOfAdult($event, -1)"><mat-icon>remove</mat-icon></button>
-      <div class="number">{{no_of_adult}}</div>
-      <button mat-icon-button (click)="changeNoOfAdult($event, 1)"><mat-icon>add</mat-icon></button>
-    </div>
-  </div>
-  <div class="group-row">
-    <span>Children</span>
-    <div class="d-flex align-items-center">
-
-      <button mat-icon-button [disabled]="no_of_children<1" (click)="changeNoOfChildren($event, -1)"><mat-icon>remove</mat-icon></button>
-      <div class="number">{{no_of_children}}</div>
-      <button mat-icon-button (click)="changeNoOfChildren($event, 1)"><mat-icon>add</mat-icon></button>
-    </div>
-  </div>
-  <div *ngIf="no_of_children>0">
-    <div class="group-row">How old are the children you're traveling with?</div>
+  <div (click)="$event.stopPropagation()">
     <div class="group-row">
-      <div class="d-flex flex-wrap">
-        <select *ngFor="let item of children" [(ngModel)]="item" class="age form-control form-control-sm  mr-2 mb-2" (click)="$event.stopPropagation()">
-          <option *ngFor="let age of ages" [value]="age">{{age}} years old</option>
-        </select>
+      <span>Adults</span>
+      <div class="d-flex align-items-center">
+        <button
+          mat-icon-button
+          [disabled]="no_of_adult < 1"
+          (click)="changeNoOfAdult($event, -1)"
+        >
+          <mat-icon>remove</mat-icon>
+        </button>
+        <div class="number">{{ no_of_adult }}</div>
+        <button mat-icon-button (click)="changeNoOfAdult($event, 1)">
+          <mat-icon>add</mat-icon>
+        </button>
       </div>
     </div>
-
-
+    <div class="group-row">
+      <span>Children</span>
+      <div class="d-flex align-items-center">
+        <button
+          mat-icon-button
+          [disabled]="no_of_children < 1"
+          (click)="changeNoOfChildren($event, -1)"
+        >
+          <mat-icon>remove</mat-icon>
+        </button>
+        <div class="number">{{ no_of_children }}</div>
+        <button mat-icon-button (click)="changeNoOfChildren($event, 1)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="no_of_children > 0">
+      <div class="group-row">
+        How old are the children you're traveling with?
+      </div>
+      <div class="group-row">
+        <div class="d-flex flex-wrap">
+          <select
+            *ngFor="let item of children"
+            [(ngModel)]="item"
+            class="age form-control form-control-sm  mr-2 mb-2"
+            (click)="$event.stopPropagation()"
+          >
+            <option *ngFor="let age of ages" [value]="age"
+              >{{ age }} years old</option
+            >
+          </select>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 </mat-menu>
